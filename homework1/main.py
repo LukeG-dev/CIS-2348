@@ -1,4 +1,4 @@
-# Luke Gilin
+# Luke Gilin 1216992
 print("Birthday Calculator, numeric values only.")
 # Get input from user with prompt
 month = int(input("Enter current month: "))

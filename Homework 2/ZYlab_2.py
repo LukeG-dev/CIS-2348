@@ -1,4 +1,4 @@
-# Luke Gilin
+# Luke Gilin 1216992
 # Zylabs 6.22 CIS 2348 LAB: Brute force equation solver
 
 

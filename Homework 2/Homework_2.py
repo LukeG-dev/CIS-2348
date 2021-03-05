@@ -35,12 +35,12 @@ with open(filename, 'r') as openfile:
             #  adds the United States formatted date to list
             if formatted_date > current_date:
                 dates.append(us_formatted_date)
-#  Prints valid date List as long as it has more than one value
+#  Prints valid date List to file as long as it has more than one value
 if len(dates) > 0:
-    for i in range(len(dates)):
-        print(dates[i])
-
-
+    with open('parsedDates.txt', 'w') as output_file:
+        for i in range(len(dates)):
+            output_file.write(dates[i])
+            output_file.write('\n')
 
 
 

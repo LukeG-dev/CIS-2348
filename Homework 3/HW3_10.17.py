@@ -6,6 +6,7 @@ class ItemToPurchase:
         self.item_price = float(item_price)
         self.item_quantity = int(item_quantity)
         self.price = self.item_price * self.item_quantity
+
     def print_item_cost(self):
 
         print('{item} {quan} @ ${value:.0f} = ${price:.0f}'.format(item=self.item_name, quan=self.item_quantity,

@@ -10,10 +10,22 @@ class ItemToPurchase:
     def print_item_cost(self):
 
         print('{item} {quan} @ ${value:.0f} = ${price:.0f}'.format(item=self.item_name, quan=self.item_quantity,
-                                                           value=self.item_price, price=self.price))
-    def add_item(self):
+                                                        value=self.item_price, price=self.price))
 
-    def remove_item(self):
+    def print_item_description(self, ItemToPurchase):
+        print(self.item_description)
+
+class ShoppingCart:
+    def __init__(self, customer_name='none', current_date='January 1, 2016'):
+        self.customer_name = customer_name
+        self.current_date = current_date
+        self.cart_items = []
+
+    def add_item(self, ItemToPurchase):
+        self.cart_items.append(ItemToPurchase)
+
+    def remove_item(self, item_name):
+        del self.cart_items[item_name]
 
     def modify_item(self):
 
@@ -23,8 +35,20 @@ class ItemToPurchase:
 
     def print_total(self):
 
-    def print_descriptions(self):
 
+
+    def print_menu(self, ShoppingCart):
+        selection = ''
+        while selection != 'q':
+            if selection == 'q':
+                exit()
+            print('a - Add item to cart')
+            print('r - Remove item from cart')
+            print('c - Change item quantity')
+            print("i - Output items' descriptions")
+            print('o - Output shopping cart')
+            print('q - Quit\n')
+            selection = input('Choose an option:')
 
 if __name__ == '__main__':
     print('Item 1')

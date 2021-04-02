@@ -21,12 +21,47 @@ if __name__ == '__main__':
     for i in sorted(Players):
         print('Jersey number: {num}, Rating: {rate}'.format(num=i,rate=Players[i]))
     print()
-    print('MENU')
-    print('a - Add player')
-    print('d - Remove player')
-    print('u - Update player rating')
-    print('r - Output players above a rating')
-    print('o - Output roster')
-    print('q - Quit\n')
-    input('Choose an option:\n')
+
+    selection = ''
+    while selection != 'q':
+        if selection == 'q':
+            exit()
+
+        print('MENU')
+        print('a - Add player')
+        print('d - Remove player')
+        print('u - Update player rating')
+        print('r - Output players above a rating')
+        print('o - Output roster')
+        print('q - Quit\n')
+        selection = input('Choose an option:\n')
+
+
+        if selection == 'o':  #  output player roster
+            print('ROSTER')
+            for i in sorted(Players):
+                print('Jersey number: {num}, Rating: {rate}'.format(num=i, rate=Players[i]))
+            print()
+        elif selection == 'r':  #  output players above a rating
+            rating = int(input('Enter a rating:'))
+            print('ABOVE {val}'.format(val=rating))
+            for i in sorted(Players):
+                if Players[i] > rating:
+                    print('Jersey number: {num}, Rating: {rate}'.format(num=i, rate=Players[i]))
+            print()
+        elif selection == 'd':  #  remove player
+            remove = int(input('Enter a jersey number:\n'))
+            del Players[remove]
+        elif selection == 'u':  #  update player rating
+            number = int(input('Enter a jersey number:\n'))
+            newRating = int(input('Enter a new rating for player:\n'))
+            Players[number] = newRating
+        elif selection == 'a':  #  Add player to roster
+            number = int(input("Enter a new player's jersey number:\n"))
+            rating = int(input("Enter the player's rating:\n"))
+            Players[number] = rating
+
+
+
+
 

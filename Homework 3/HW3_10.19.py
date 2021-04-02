@@ -25,16 +25,25 @@ class ShoppingCart:
         self.cart_items.append(ItemToPurchase)
 
     def remove_item(self, item_name):
-        del self.cart_items[item_name]
+        if item_name in self.cart_items:
+            del self.cart_items[item_name]
+        else:
+            print('Item not found in cart. Nothing removed.')
 
-    def modify_item(self):
-
+    def modify_item(self, ItemToPurchase):
+        if ItemToPurchase in self.cart_items:
+            print("???")
+        else:
+            print('Item not found in cart. nothing modified.')
     def get_num_items_in_cart(self):
-
+        return len(self.cart_items)
     def get_cost_of_cart(self):
-
+        total = 0
+        for item in self.cart_items:
+            total = total + item.price
+        return total
     def print_total(self):
-
+        print('')
 
 
     def print_menu(self, ShoppingCart):
@@ -51,12 +60,10 @@ class ShoppingCart:
             selection = input('Choose an option:')
 
 if __name__ == '__main__':
-    print('Item 1')
-    itemOneName = input('Enter the item name:\n')
-    itemOnePrice = float(input('Enter the item price:\n'))
-    itemOneQuan = int(input('Enter the item quantity:\n\n'))
+    c_name = input("Enter customer's name")
+    c_date = input("Enter today's date:\n")
 
-    itemOne = ItemToPurchase(itemOneName, itemOnePrice, itemOneQuan)
+
 
     print('Item 2')
     itemTwoName = input('Enter the item name:\n')
@@ -65,10 +72,3 @@ if __name__ == '__main__':
 
     itemTwo = ItemToPurchase(itemTwoName, itemTwoPrice, itemTwoQuan)
 
-    print('TOTAL COST')
-    itemOne.print_item_cost()
-    itemTwo.print_item_cost()
-
-    total = itemOne.price + itemTwo.price
-    print()
-    print('Total: ${total:.0f}'.format(total=total))

@@ -8,6 +8,7 @@ from datetime import date
 
 if __name__ == '__main__':
 
+    #  Class definition
     class Item:
 
         def __init__(self, item_id, fact_name, item_type, item_price, service_date, damaged=''):
@@ -114,7 +115,24 @@ if __name__ == '__main__':
                 csv_writer.writerow(data_list)
                 x += 1
 
-    sorted_list = sort_by_date(unsorted_list)
-    current_date = date.today()
-    current_date = current_date.strftime("%d/%m/%Y")
-    print(current_date)
+    #  converts string date to date object
+    for i in sorted_list:
+        data_list = i
+        raw_date = i[4].split(sep='/')
+        for x in range(0, len(raw_date)):
+            raw_date[x] = int(raw_date[x])
+        s_date = datetime.date(raw_date[2], raw_date[0], raw_date[1])
+        i[4] = s_date
+
+    #  sorts list by date object
+    sorted_list = sort_by_date(sorted_list)
+    #  Gets current date
+    current_date = datetime.date.today()
+
+    #  writes to file if service date is less than or equal to current date
+    with open('PastServiceDateInventory.csv', 'w') as csv_file:
+        csv_writer = csv.writer(csv_file)
+        for i in sorted_list:
+            data_list = i
+            if current_date >= i[4]:
+                csv_writer.writerow(data_list)

@@ -18,5 +18,5 @@ def selection_sort_descend_trace(numbers):
 
 if __name__ == '__main__':
 
-    nanora = input().split()
+    nanora = [int(x) for x in input('').split()]
     selection_sort_descend_trace(nanora)
